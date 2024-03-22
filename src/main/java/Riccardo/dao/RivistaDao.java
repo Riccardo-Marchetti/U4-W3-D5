@@ -52,5 +52,4 @@ public class RivistaDao {
         query.setParameter("annoPubblicazione", annoPubblicazione);
         return query.getResultList();
     }
-
 }

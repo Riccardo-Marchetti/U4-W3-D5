@@ -52,4 +52,9 @@ public class LibroDao {
         query.setParameter("annoPubblicazione", annoPubblicazione);
         return query.getResultList();
     }
+    public List<Libri> ricercaLibroAutore(String autore){
+        TypedQuery<Libri> query = em.createQuery("SELECT l FROM Libri l WHERE l.autore = :autore", Libri.class);
+        query.setParameter("autore", autore);
+        return query.getResultList();
+    }
 }

@@ -101,8 +101,12 @@ public class Application {
 
         // RICERCA LIBRO PER ANNO DI PUBBLICAZIONE
         ld.ricercaLibroAnnoPubblicazione(2022).forEach(System.out::println);
+
         // RICERCA RIVISTA PER ANNO DI PUBBLICAZIONE
         rd.ricercaRivistaAnnoPubblicazione(2016).forEach(System.out::println);
+
+        // RICERCA LIBRO PER AUTORE
+        ld.ricercaLibroAutore("Riccardo").forEach(System.out::println);
     }
 
 }
