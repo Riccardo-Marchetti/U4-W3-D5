@@ -5,6 +5,9 @@ import Riccardo.entities.Libri;
 import Riccardo.exception.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
+
+import java.util.List;
 
 public class LibroDao {
     private final EntityManager em;
@@ -37,5 +40,11 @@ public class LibroDao {
 
         transaction.commit();
         System.out.println("Libro: " + found.getCodiceISBN() + " eliminato correttamente");
+    }
+
+    public List<Libri> ricercaLibroISBN(long codiceISBN){
+        TypedQuery<Libri> query = em.createQuery("SELECT l FROM Libri l WHERE l.codiceISBN = :codiceISBN", Libri.class);
+        query.setParameter("codiceISBN", codiceISBN);
+        return query.getResultList();
     }
 }

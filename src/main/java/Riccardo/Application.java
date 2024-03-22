@@ -75,24 +75,28 @@ public class Application {
         Prestito prestitoRivista2 = new Prestito(utente4, rivista4, LocalDate.of(2024, 02, 17), LocalDate.of(2024, 02, 17).plusDays(30), LocalDate.of(2024, 03, 01));
 
         // AGGIUNTA AL CATALOGO
-        ld.salvaLibro(libro1);
-        ld.salvaLibro(libro2);
-        ld.salvaLibro(libro3);
-        ld.salvaLibro(libro4);
-        ld.salvaLibro(libro5);
-        ld.salvaLibro(libro6);
-
-        rd.salvaRivista(rivista1);
-        rd.salvaRivista(rivista2);
-        rd.salvaRivista(rivista3);
-        rd.salvaRivista(rivista4);
-        rd.salvaRivista(rivista5);
-        rd.salvaRivista(rivista6);
+//        ld.salvaLibro(libro1);
+//        ld.salvaLibro(libro2);
+//        ld.salvaLibro(libro3);
+//        ld.salvaLibro(libro4);
+//        ld.salvaLibro(libro5);
+//        ld.salvaLibro(libro6);
+//
+//        rd.salvaRivista(rivista1);
+//        rd.salvaRivista(rivista2);
+//        rd.salvaRivista(rivista3);
+//        rd.salvaRivista(rivista4);
+//        rd.salvaRivista(rivista5);
+//        rd.salvaRivista(rivista6);
 
         // RIMUOVI DAL CATALOGO TRAMITE CODICE ISBN
-        ld.rimuoviLibro(6);
-        rd.rimuoviRivista(6);
+//        ld.rimuoviLibro(6);
+//        rd.rimuoviRivista(6);
 
+        // RICERCA LIBRO PER CODICE ISBN
+        ld.ricercaLibroISBN(1).forEach(System.out::println);
+        // RICERCA RIVISTA PER ISBN
+        rd.ricercaRivistaISBN(1).forEach(System.out::println);
 
 
     }

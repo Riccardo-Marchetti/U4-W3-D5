@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+//@NamedQuery(name = "", query = "")
 public class Libri {
     // ATTRIBUTI
     @Id

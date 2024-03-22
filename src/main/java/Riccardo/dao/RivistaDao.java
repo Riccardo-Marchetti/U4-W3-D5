@@ -5,6 +5,9 @@ import Riccardo.entities.Riviste;
 import Riccardo.exception.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
+
+import java.util.List;
 
 public class RivistaDao {
     private final EntityManager em;
@@ -38,6 +41,11 @@ public class RivistaDao {
 
         transaction.commit();
         System.out.println("Rivista: " + found.getCodiceISBN() + " eliminata correttamente");
+    }
+    public List<Riviste> ricercaRivistaISBN(long codiceISBN){
+        TypedQuery<Riviste> query = em.createQuery("SELECT r FROM Riviste r WHERE r.codiceISBN = :codiceISBN", Riviste.class);
+        query.setParameter("codiceISBN", codiceISBN);
+        return query.getResultList();
     }
 
 }
