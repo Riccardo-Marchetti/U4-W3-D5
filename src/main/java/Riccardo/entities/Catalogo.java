@@ -2,6 +2,7 @@ package Riccardo.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,13 +17,13 @@ public class Catalogo {
     private List<Riviste> riviste;
 
     // COSTRUTTORE
-    public Catalogo(List<Libri> libri, List<Riviste> riviste) {
-        this.libri = libri;
-        this.riviste = riviste;
+    public Catalogo() {
+        this.libri = new ArrayList<>();
+        this.riviste = new ArrayList<>();
     }
-    public Catalogo(){
-
-    }
+//    public Catalogo(){
+//
+//    }
 
     // GETTER E SETTER
     public long getId() {
@@ -45,7 +46,7 @@ public class Catalogo {
         this.riviste = riviste;
     }
 
-    // TOSTRING
+    // TO STRING
 
     @Override
     public String toString() {

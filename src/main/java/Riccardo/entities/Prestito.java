@@ -89,7 +89,7 @@ public class Prestito {
         this.dataRestituzioneEffettiva = dataRestituzioneEffettiva;
     }
 
-    // TOSTRING
+    // TO STRING
     @Override
     public String toString() {
         return "Prestito{" +

@@ -54,7 +54,7 @@ public class Utente {
         this.dataDiNascita = dataDiNascita;
     }
 
-    // TOSTRING
+    // TO STRING
     @Override
     public String toString() {
         return "Utente{" +

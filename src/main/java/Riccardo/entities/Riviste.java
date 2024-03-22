@@ -75,7 +75,7 @@ public class Riviste {
         this.catalogo = catalogo;
     }
 
-    // TOSTRING
+    // TO STRING
     @Override
     public String toString() {
         return "Riviste{" +
