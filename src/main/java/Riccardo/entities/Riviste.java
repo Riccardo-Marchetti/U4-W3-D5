@@ -3,6 +3,8 @@ package Riccardo.entities;
 import Riccardo.enums.Periodicita;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Riviste {
     // ATTRIBUTI
@@ -14,18 +16,25 @@ public class Riviste {
     private int numeroPagine;
     @Enumerated(EnumType.STRING)
     private Periodicita periodicita;
-    @ManyToOne
-    @JoinColumn (name = "catalogo_id")
-    private Catalogo catalogo;
+    @OneToMany(mappedBy = "riviste")
+    private List<Prestito> prestiti;
 
     // COSTRUTTORE
-    public Riviste(String titolo, int annoPubblicazione, int numeroPagine, Periodicita periodicita, Catalogo catalogo) {
+    public Riviste(String titolo, int annoPubblicazione, int numeroPagine, Periodicita periodicita, List<Prestito> prestiti) {
         this.titolo = titolo;
         this.annoPubblicazione = annoPubblicazione;
         this.numeroPagine = numeroPagine;
         this.periodicita = periodicita;
-        this.catalogo = catalogo;
+        this.prestiti = prestiti;
     }
+
+    public Riviste(String titolo, int annoPubblicazione, int numeroPagine, Periodicita periodicita) {
+        this.titolo = titolo;
+        this.annoPubblicazione = annoPubblicazione;
+        this.numeroPagine = numeroPagine;
+        this.periodicita = periodicita;
+    }
+
     public Riviste(){
 
     }
@@ -67,12 +76,12 @@ public class Riviste {
         this.periodicita = periodicita;
     }
 
-    public Catalogo getCatalogo() {
-        return catalogo;
+    public List<Prestito> getPrestiti() {
+        return prestiti;
     }
 
-    public void setCatalogo(Catalogo catalogo) {
-        this.catalogo = catalogo;
+    public void setPrestiti(List<Prestito> prestiti) {
+        this.prestiti = prestiti;
     }
 
     // TO STRING
@@ -84,7 +93,7 @@ public class Riviste {
                 ", annoPubblicazione=" + annoPubblicazione +
                 ", numeroPagine=" + numeroPagine +
                 ", periodicita=" + periodicita +
-                ", catalogo=" + catalogo +
+                ", prestiti=" + prestiti +
                 '}';
     }
 }

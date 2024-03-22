@@ -11,19 +11,18 @@ public class Catalogo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @OneToMany (mappedBy = "catalogo")
     private List<Libri> libri;
-    @OneToMany (mappedBy = "catalogo")
     private List<Riviste> riviste;
 
     // COSTRUTTORE
-    public Catalogo() {
-        this.libri = new ArrayList<>();
-        this.riviste = new ArrayList<>();
+    public Catalogo(List<Libri> libri, List<Riviste> riviste) {
+        this.libri = libri;
+        this.riviste = riviste;
     }
-//    public Catalogo(){
-//
-//    }
+
+    public Catalogo(){
+
+    }
 
     // GETTER E SETTER
     public long getId() {

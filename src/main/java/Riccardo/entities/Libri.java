@@ -2,6 +2,8 @@ package Riccardo.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Libri {
     // ATTRIBUTI
@@ -13,19 +15,27 @@ public class Libri {
     private int numeroPagine;
     private String autore;
     private String genere;
-    @ManyToOne
-    @JoinColumn (name = "catalogo_id")
-    private Catalogo catalogo;
+    @OneToMany(mappedBy = "libri")
+    private List<Prestito> prestiti;
 
     // COSTRUTTORE
-    public Libri(String titolo, int annoPubblicazione, int numeroPagine, String autore, String genere, Catalogo catalogo) {
+    public Libri(String titolo, int annoPubblicazione, int numeroPagine, String autore, String genere, List<Prestito> prestiti) {
         this.titolo = titolo;
         this.annoPubblicazione = annoPubblicazione;
         this.numeroPagine = numeroPagine;
         this.autore = autore;
         this.genere = genere;
-        this.catalogo = catalogo;
+        this.prestiti = prestiti;
     }
+
+    public Libri(String titolo, int annoPubblicazione, int numeroPagine, String autore, String genere) {
+        this.titolo = titolo;
+        this.annoPubblicazione = annoPubblicazione;
+        this.numeroPagine = numeroPagine;
+        this.autore = autore;
+        this.genere = genere;
+    }
+
     public Libri(){
 
     }
@@ -75,12 +85,12 @@ public class Libri {
         this.genere = genere;
     }
 
-    public Catalogo getCatalogo() {
-        return catalogo;
+    public List<Prestito> getPrestiti() {
+        return prestiti;
     }
 
-    public void setCatalogo(Catalogo catalogo) {
-        this.catalogo = catalogo;
+    public void setPrestiti(List<Prestito> prestiti) {
+        this.prestiti = prestiti;
     }
 
     // TO STRING
@@ -93,7 +103,7 @@ public class Libri {
                 ", numeroPagine=" + numeroPagine +
                 ", autore='" + autore + '\'' +
                 ", genere='" + genere + '\'' +
-                ", catalogo=" + catalogo +
+                ", prestiti=" + prestiti +
                 '}';
     }
 }

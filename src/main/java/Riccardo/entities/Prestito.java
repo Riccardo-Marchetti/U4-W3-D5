@@ -19,19 +19,27 @@ public class Prestito {
     @ManyToOne
     @JoinColumn (name = "riviste_id")
     private Riviste riviste;
-    LocalDate dataInizioPrestito;
-    LocalDate dataRestituzionePrevista;
-    LocalDate dataRestituzioneEffettiva;
+    private LocalDate dataInizioPrestito;
+    private LocalDate dataRestituzionePrevista;
+    private LocalDate dataRestituzioneEffettiva;
 
     // COSTRUTTORE
-    public Prestito(Utente utente, Libri libri, Riviste riviste, LocalDate dataInizioPrestito, LocalDate dataRestituzionePrevista, LocalDate dataRestituzioneEffettiva) {
+    public Prestito(Utente utente, Libri libri, LocalDate dataInizioPrestito, LocalDate dataRestituzionePrevista, LocalDate dataRestituzioneEffettiva) {
         this.utente = utente;
         this.libri = libri;
+        this.dataInizioPrestito = dataInizioPrestito;
+        this.dataRestituzionePrevista = dataRestituzionePrevista;
+        this.dataRestituzioneEffettiva = dataRestituzioneEffettiva;
+    }
+
+    public Prestito(Utente utente, Riviste riviste, LocalDate dataInizioPrestito, LocalDate dataRestituzionePrevista, LocalDate dataRestituzioneEffettiva) {
+        this.utente = utente;
         this.riviste = riviste;
         this.dataInizioPrestito = dataInizioPrestito;
         this.dataRestituzionePrevista = dataRestituzionePrevista;
         this.dataRestituzioneEffettiva = dataRestituzioneEffettiva;
     }
+
     public Prestito(){
 
     }

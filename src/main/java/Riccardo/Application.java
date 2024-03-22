@@ -1,8 +1,6 @@
 package Riccardo;
 
-import Riccardo.entities.Catalogo;
-import Riccardo.entities.Libri;
-import Riccardo.entities.Riviste;
+import Riccardo.entities.*;
 import Riccardo.enums.Periodicita;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
@@ -10,6 +8,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import org.hibernate.Session;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,42 +20,54 @@ public class Application {
         // ENTITY MANAGER
 //        EntityManager em = emf.createEntityManager();
 
-        // CREAZIONE CATALOGO
-        Catalogo catalogo = new Catalogo();
+        // CREAZIONE UTENTI
+        Utente utente1 = new Utente("Fabio", "Rossi", LocalDate.of(2000, 03, 20));
+        Utente utente2 = new Utente("Matteo", "Bianchi",LocalDate.of(1998, 07, 30));
+        Utente utente3 = new Utente("Andrea", "Esposito", LocalDate.of(1990, 05, 12));
+        Utente utente4 = new Utente("Matteo", "Romano",LocalDate.of(1993, 01, 17));
 
         // CREAZIONE LIBRI
-        Libri libro1 = new Libri("libro1", 2020, 260, "Riccardo", "Fantasy", catalogo);
-        Libri libro2 = new Libri("libro2", 2023, 300, "Antonio", "Avventura e azione", catalogo);
-        Libri libro3 = new Libri("libro3", 2022, 180, "Luca", "Thriller", catalogo);
-        Libri libro4 = new Libri("libro4", 2019, 320, "Fabio", "Fantascienza", catalogo);
-        Libri libro5 = new Libri("libro5", 2012, 162, "Alberto", "Horror", catalogo);
-        Libri libro6 = new Libri("libro6", 2015, 235, "Fabio", "Fantasy", catalogo);
+        Libri libro1 = new Libri("libro1", 2020, 260, "Riccardo", "Fantasy");
+        Libri libro2 = new Libri("libro2", 2023, 300, "Antonio", "Avventura e azione");
+        Libri libro3 = new Libri("libro3", 2022, 180, "Luca", "Thriller" );
+        Libri libro4 = new Libri("libro4", 2019, 320, "Fabio", "Fantascienza");
+        Libri libro5 = new Libri("libro5", 2012, 162, "Alberto", "Horror");
+        Libri libro6 = new Libri("libro6", 2015, 235, "Fabio", "Fantasy");
 
-        // AGGIUNTA LIBRI ALLA LISTA DEI LIBRI NEL CATALOGO
-        catalogo.getLibri().add(libro1);
-        catalogo.getLibri().add(libro2);
-        catalogo.getLibri().add(libro3);
-        catalogo.getLibri().add(libro4);
-        catalogo.getLibri().add(libro5);
-        catalogo.getLibri().add(libro6);
+        // LISTA DI LIBRI
+        List<Libri> listaLibri = new ArrayList<>();
+        listaLibri.add(libro1);
+        listaLibri.add(libro2);
+        listaLibri.add(libro3);
+        listaLibri.add(libro4);
+        listaLibri.add(libro5);
+        listaLibri.add(libro6);
 
         // CREAZIONE RIVISTE
-        Riviste rivista1 = new Riviste( "rivista1", 2016, 40, Periodicita.SETTIMANALE, catalogo);
-        Riviste rivista2 = new Riviste( "rivista2", 2018, 75, Periodicita.MENSILE, catalogo);
-        Riviste rivista3 = new Riviste( "rivista3", 2020, 90, Periodicita.SEMESTRALE, catalogo);
-        Riviste rivista4 = new Riviste( "rivista4", 2022, 82, Periodicita.MENSILE, catalogo);
-        Riviste rivista5 = new Riviste("rivista5", 2009, 33, Periodicita.SEMESTRALE, catalogo);
-        Riviste rivista6 = new Riviste( "rivista6", 2011, 45, Periodicita.SETTIMANALE, catalogo);
+        Riviste rivista1 = new Riviste( "rivista1", 2016, 40, Periodicita.SETTIMANALE);
+        Riviste rivista2 = new Riviste( "rivista2", 2018, 75, Periodicita.MENSILE);
+        Riviste rivista3 = new Riviste( "rivista3", 2020, 90, Periodicita.SEMESTRALE);
+        Riviste rivista4 = new Riviste( "rivista4", 2022, 82, Periodicita.MENSILE);
+        Riviste rivista5 = new Riviste("rivista5", 2009, 33, Periodicita.SEMESTRALE);
+        Riviste rivista6 = new Riviste( "rivista6", 2011, 45, Periodicita.SETTIMANALE);
 
-        // AGGIUNTA RIVISTE ALLA LISTA DELLE RIVISTE NEL CATALOGO
-        catalogo.getRiviste().add(rivista1);
-        catalogo.getRiviste().add(rivista2);
-        catalogo.getRiviste().add(rivista3);
-        catalogo.getRiviste().add(rivista4);
-        catalogo.getRiviste().add(rivista5);
-        catalogo.getRiviste().add(rivista6);
+        // LISTA DI RIVISTE
+        List<Riviste> listaRiviste = new ArrayList<>();
+        listaRiviste.add(rivista1);
+        listaRiviste.add(rivista2);
+        listaRiviste.add(rivista3);
+        listaRiviste.add(rivista4);
+        listaRiviste.add(rivista5);
+        listaRiviste.add(rivista6);
 
+        // CREAZIONE CATALOGO CONTENENTE LIBRI E RIVISTE
+        Catalogo catalogo = new Catalogo(listaLibri, listaRiviste);
 
+        // CREAZIONE PRESTITI
+        Prestito prestitoLibro1 = new Prestito(utente1, libro1, LocalDate.of(2024, 03, 21), LocalDate.of(2024, 03, 21).plusDays(30), null);
+        Prestito prestitoLibro2 = new Prestito(utente3, libro3, LocalDate.of(2024, 02, 10), LocalDate.of(2024, 02, 10).plusDays(30), LocalDate.of(2024, 02, 25));
+        Prestito prestitoRivista1 = new Prestito(utente2, rivista2, LocalDate.of(2024, 03, 1), LocalDate.of(2024, 03, 1).plusDays(30), null);
+        Prestito prestitoRivista2 = new Prestito(utente4, rivista4, LocalDate.of(2024, 02, 17), LocalDate.of(2024, 02, 17).plusDays(30), LocalDate.of(2024, 03, 01));
 
     }
 
