@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+//@NamedQuery(name = "inprestito", query = "SELECT p FROM Prestito p WHERE p.")
 public class Prestito {
     // ATTRIBUTI
     @Id

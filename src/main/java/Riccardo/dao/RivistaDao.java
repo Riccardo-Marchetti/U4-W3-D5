@@ -57,4 +57,9 @@ public class RivistaDao {
         query.setParameter("titolo", titolo);
         return query.getResultList();
     }
+    public List<Riviste> ricercaRivistaParteDiTitolo(String titolo){
+        TypedQuery<Riviste> query = em.createQuery("SELECT r FROM Riviste r WHERE r.titolo LIKE :titolo", Riviste.class);
+        query.setParameter("titolo", "%" + titolo + "%");
+        return query.getResultList();
+    }
 }

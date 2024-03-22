@@ -2,6 +2,7 @@ package Riccardo.dao;
 
 import Riccardo.entities.Catalogo;
 import Riccardo.entities.Libri;
+import Riccardo.entities.Riviste;
 import Riccardo.exception.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -60,6 +61,11 @@ public class LibroDao {
     public List<Libri> ricercaLibroTitolo(String titolo){
         TypedQuery<Libri> query = em.createQuery("SELECT l FROM Libri l WHERE l.titolo = :titolo", Libri.class);
         query.setParameter("titolo", titolo);
+        return query.getResultList();
+    }
+    public List<Libri> ricercaLibroParteDiTitolo(String titolo){
+        TypedQuery<Libri> query = em.createQuery("SELECT l FROM Libri l WHERE l.titolo LIKE :titolo", Libri.class);
+        query.setParameter("titolo", "%" + titolo + "%");
         return query.getResultList();
     }
 }

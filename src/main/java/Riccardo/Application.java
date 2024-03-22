@@ -1,7 +1,9 @@
 package Riccardo;
 
 import Riccardo.dao.LibroDao;
+import Riccardo.dao.PrestitoDAO;
 import Riccardo.dao.RivistaDao;
+import Riccardo.dao.UtenteDAO;
 import Riccardo.entities.*;
 import Riccardo.enums.Periodicita;
 import jakarta.persistence.Entity;
@@ -24,6 +26,8 @@ public class Application {
         EntityManager em = emf.createEntityManager();
         LibroDao ld = new LibroDao(em);
         RivistaDao rd = new RivistaDao(em);
+        UtenteDAO ud = new UtenteDAO(em);
+        PrestitoDAO pd = new PrestitoDAO(em);
 
         // CREAZIONE UTENTI
         Utente utente1 = new Utente("Fabio", "Rossi", LocalDate.of(2000, 03, 20));
@@ -75,19 +79,31 @@ public class Application {
         Prestito prestitoRivista2 = new Prestito(utente4, rivista4, LocalDate.of(2024, 02, 17), LocalDate.of(2024, 02, 17).plusDays(30), LocalDate.of(2024, 03, 01));
 
         // AGGIUNTA AL CATALOGO
-//        ld.salvaLibro(libro1);
-//        ld.salvaLibro(libro2);
-//        ld.salvaLibro(libro3);
-//        ld.salvaLibro(libro4);
-//        ld.salvaLibro(libro5);
-//        ld.salvaLibro(libro6);
-//
-//        rd.salvaRivista(rivista1);
-//        rd.salvaRivista(rivista2);
-//        rd.salvaRivista(rivista3);
-//        rd.salvaRivista(rivista4);
-//        rd.salvaRivista(rivista5);
-//        rd.salvaRivista(rivista6);
+        System.out.println("------------------------ AGGIUNTA LIBRO AL CATALOGO ------------------------");
+        ld.salvaLibro(libro1);
+        ld.salvaLibro(libro2);
+        ld.salvaLibro(libro3);
+        ld.salvaLibro(libro4);
+        ld.salvaLibro(libro5);
+        ld.salvaLibro(libro6);
+        System.out.println("------------------------ AGGIUNTA RIVISTA AL CATALOGO ------------------------");
+        rd.salvaRivista(rivista1);
+        rd.salvaRivista(rivista2);
+        rd.salvaRivista(rivista3);
+        rd.salvaRivista(rivista4);
+        rd.salvaRivista(rivista5);
+        rd.salvaRivista(rivista6);
+        System.out.println("------------------------ AGGIUNTA UTENTE ------------------------");
+        ud.salvaUtente(utente1);
+        ud.salvaUtente(utente2);
+        ud.salvaUtente(utente3);
+        ud.salvaUtente(utente4);
+
+        System.out.println("------------------------ AGGIUNTA PRESTITO AL CATALOGO ------------------------");
+        pd.salvaPrestito(prestitoLibro1);
+        pd.salvaPrestito(prestitoLibro2);
+        pd.salvaPrestito(prestitoRivista1);
+        pd.salvaPrestito(prestitoRivista2);
 
         // RIMUOVI DAL CATALOGO TRAMITE CODICE ISBN
 //        ld.rimuoviLibro(6);
@@ -120,6 +136,20 @@ public class Application {
         // RICERCA RIVISTA PER TITOLO
         System.out.println("------------------------ RICERCA RIVISTA PER TITOLO ------------------------");
         rd.ricercaRivistaTitolo("rivista5").forEach(System.out::println);
+
+        // RICERCA LIBRO PER UNA PARTE DI TITOLO
+        System.out.println("------------------------ RICERCA LIBRO PER UNA PARTE DI TITOLO ------------------------");
+        ld.ricercaLibroParteDiTitolo("2").forEach(System.out::println);
+
+        // RICERCA RIVISTA PER UNA PARTE DI TITOLO
+        System.out.println("------------------------ RICERCA RIVISTA PER UNA PARTE DI TITOLO ------------------------");
+        rd.ricercaRivistaParteDiTitolo("3").forEach(System.out::println);
+
+
+        // RICERCA DI UN LIBRO ATTUALMENTE IN PRESTITO DATO UN NUMERO DI TESSERA UTENTE
+
+
+        // RICERCA DI UNA RIVISTA ATTUALMENTE IN PRESTITO DATO UN NUMERO DI TESSERA UTENTE
     }
 
 }
