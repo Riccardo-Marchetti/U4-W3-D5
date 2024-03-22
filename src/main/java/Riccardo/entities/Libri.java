@@ -9,7 +9,7 @@ public class Libri {
     // ATTRIBUTI
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private String codiceISBN;
+    private long codiceISBN;
     private String titolo;
     private int annoPubblicazione;
     private int numeroPagine;
@@ -41,7 +41,7 @@ public class Libri {
     }
 
     // GETTER E SETTER
-    public String getCodiceISBN() {
+    public long getCodiceISBN() {
         return codiceISBN;
     }
 

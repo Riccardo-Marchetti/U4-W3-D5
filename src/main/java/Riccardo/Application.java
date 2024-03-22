@@ -1,5 +1,7 @@
 package Riccardo;
 
+import Riccardo.dao.LibroDao;
+import Riccardo.dao.RivistaDao;
 import Riccardo.entities.*;
 import Riccardo.enums.Periodicita;
 import jakarta.persistence.Entity;
@@ -15,10 +17,13 @@ import java.util.List;
 
 public class Application {
     // ENTITY MANAGER FACTORY
-//   private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("catalogobibliografico");
+   private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("catalogobibliografico");
     public static void main(String[] args) {
+
         // ENTITY MANAGER
-//        EntityManager em = emf.createEntityManager();
+        EntityManager em = emf.createEntityManager();
+        LibroDao ld = new LibroDao(em);
+        RivistaDao rd = new RivistaDao(em);
 
         // CREAZIONE UTENTI
         Utente utente1 = new Utente("Fabio", "Rossi", LocalDate.of(2000, 03, 20));
@@ -68,6 +73,27 @@ public class Application {
         Prestito prestitoLibro2 = new Prestito(utente3, libro3, LocalDate.of(2024, 02, 10), LocalDate.of(2024, 02, 10).plusDays(30), LocalDate.of(2024, 02, 25));
         Prestito prestitoRivista1 = new Prestito(utente2, rivista2, LocalDate.of(2024, 03, 1), LocalDate.of(2024, 03, 1).plusDays(30), null);
         Prestito prestitoRivista2 = new Prestito(utente4, rivista4, LocalDate.of(2024, 02, 17), LocalDate.of(2024, 02, 17).plusDays(30), LocalDate.of(2024, 03, 01));
+
+        // AGGIUNTA AL CATALOGO
+        ld.salvaLibro(libro1);
+        ld.salvaLibro(libro2);
+        ld.salvaLibro(libro3);
+        ld.salvaLibro(libro4);
+        ld.salvaLibro(libro5);
+        ld.salvaLibro(libro6);
+
+        rd.salvaRivista(rivista1);
+        rd.salvaRivista(rivista2);
+        rd.salvaRivista(rivista3);
+        rd.salvaRivista(rivista4);
+        rd.salvaRivista(rivista5);
+        rd.salvaRivista(rivista6);
+
+        // RIMUOVI DAL CATALOGO TRAMITE CODICE ISBN
+        ld.rimuoviLibro(6);
+        rd.rimuoviRivista(6);
+
+
 
     }
 
