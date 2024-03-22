@@ -57,4 +57,9 @@ public class LibroDao {
         query.setParameter("autore", autore);
         return query.getResultList();
     }
+    public List<Libri> ricercaLibroTitolo(String titolo){
+        TypedQuery<Libri> query = em.createQuery("SELECT l FROM Libri l WHERE l.titolo = :titolo", Libri.class);
+        query.setParameter("titolo", titolo);
+        return query.getResultList();
+    }
 }

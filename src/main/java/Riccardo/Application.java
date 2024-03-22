@@ -94,19 +94,32 @@ public class Application {
 //        rd.rimuoviRivista(6);
 
         // RICERCA LIBRO PER CODICE ISBN
+        System.out.println("------------------------ RICERCA LIBRO PER CODICE ISBN ------------------------");
         ld.ricercaLibroISBN(1).forEach(System.out::println);
 
         // RICERCA RIVISTA PER ISBN
+        System.out.println("------------------------ RICERCA RIVISTA PER CODICE ISBN ------------------------");
         rd.ricercaRivistaISBN(1).forEach(System.out::println);
 
         // RICERCA LIBRO PER ANNO DI PUBBLICAZIONE
+        System.out.println("------------------------ RICERCA LIBRO PER ANNO DI PUBBLICAZIONE ------------------------");
         ld.ricercaLibroAnnoPubblicazione(2022).forEach(System.out::println);
 
         // RICERCA RIVISTA PER ANNO DI PUBBLICAZIONE
+        System.out.println("------------------------ RICERCA RIVISTA PER ANNO DI PUBBLICAZIONE ------------------------");
         rd.ricercaRivistaAnnoPubblicazione(2016).forEach(System.out::println);
 
         // RICERCA LIBRO PER AUTORE
+        System.out.println("------------------------ RICERCA LIBRO PER AUTORE ------------------------");
         ld.ricercaLibroAutore("Riccardo").forEach(System.out::println);
+
+        // RICERCA LIBRO PER TITOLO
+        System.out.println("------------------------ RICERCA LIBRO PER TITOLO ------------------------");
+        ld.ricercaLibroTitolo("libro5").forEach(System.out::println);
+
+        // RICERCA RIVISTA PER TITOLO
+        System.out.println("------------------------ RICERCA RIVISTA PER TITOLO ------------------------");
+        rd.ricercaRivistaTitolo("rivista5").forEach(System.out::println);
     }
 
 }
