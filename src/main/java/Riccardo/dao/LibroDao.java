@@ -47,4 +47,9 @@ public class LibroDao {
         query.setParameter("codiceISBN", codiceISBN);
         return query.getResultList();
     }
+    public List<Libri> ricercaLibroAnnoPubblicazione(int annoPubblicazione){
+        TypedQuery<Libri> query = em.createQuery("SELECT l FROM Libri l WHERE l.annoPubblicazione = :annoPubblicazione", Libri.class);
+        query.setParameter("annoPubblicazione", annoPubblicazione);
+        return query.getResultList();
+    }
 }

@@ -47,5 +47,10 @@ public class RivistaDao {
         query.setParameter("codiceISBN", codiceISBN);
         return query.getResultList();
     }
+    public List<Riviste> ricercaRivistaAnnoPubblicazione(int annoPubblicazione){
+        TypedQuery<Riviste> query = em.createQuery("SELECT r FROM Riviste r WHERE r.annoPubblicazione = :annoPubblicazione", Riviste.class);
+        query.setParameter("annoPubblicazione", annoPubblicazione);
+        return query.getResultList();
+    }
 
 }

@@ -95,10 +95,14 @@ public class Application {
 
         // RICERCA LIBRO PER CODICE ISBN
         ld.ricercaLibroISBN(1).forEach(System.out::println);
+
         // RICERCA RIVISTA PER ISBN
         rd.ricercaRivistaISBN(1).forEach(System.out::println);
 
-
+        // RICERCA LIBRO PER ANNO DI PUBBLICAZIONE
+        ld.ricercaLibroAnnoPubblicazione(2022).forEach(System.out::println);
+        // RICERCA RIVISTA PER ANNO DI PUBBLICAZIONE
+        rd.ricercaRivistaAnnoPubblicazione(2016).forEach(System.out::println);
     }
 
 }
