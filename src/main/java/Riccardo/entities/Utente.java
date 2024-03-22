@@ -80,7 +80,7 @@ public class Utente {
                 ", nome='" + nome + '\'' +
                 ", cognome='" + cognome + '\'' +
                 ", dataDiNascita=" + dataDiNascita +
-                ", prestiti=" + prestiti +
+//                ", prestiti=" + prestiti +
                 '}';
     }
 }

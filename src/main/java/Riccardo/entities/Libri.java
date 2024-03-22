@@ -104,7 +104,7 @@ public class Libri {
                 ", numeroPagine=" + numeroPagine +
                 ", autore='" + autore + '\'' +
                 ", genere='" + genere + '\'' +
-                ", prestiti=" + prestiti +
+//                ", prestiti=" + prestiti +
                 '}';
     }
 }

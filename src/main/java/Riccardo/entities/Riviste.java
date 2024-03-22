@@ -93,7 +93,7 @@ public class Riviste {
                 ", annoPubblicazione=" + annoPubblicazione +
                 ", numeroPagine=" + numeroPagine +
                 ", periodicita=" + periodicita +
-                ", prestiti=" + prestiti +
+//                ", prestiti=" + prestiti +
                 '}';
     }
 }

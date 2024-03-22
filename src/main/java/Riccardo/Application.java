@@ -74,8 +74,8 @@ public class Application {
 
         // CREAZIONE PRESTITI
         Prestito prestitoLibro1 = new Prestito(utente1, libro1, LocalDate.of(2024, 03, 21), LocalDate.of(2024, 03, 21).plusDays(30), null);
-        Prestito prestitoLibro2 = new Prestito(utente3, libro3, LocalDate.of(2024, 02, 10), LocalDate.of(2024, 02, 10).plusDays(30), LocalDate.of(2024, 02, 25));
-        Prestito prestitoRivista1 = new Prestito(utente2, rivista2, LocalDate.of(2024, 03, 1), LocalDate.of(2024, 03, 1).plusDays(30), null);
+        Prestito prestitoLibro2 = new Prestito(utente3, libro3, LocalDate.of(2024, 02, 10), LocalDate.of(2024, 02, 10).plusDays(30), LocalDate.of(2024, 07, 25));
+        Prestito prestitoRivista1 = new Prestito(utente2, rivista2, LocalDate.of(2024, 02, 15), LocalDate.of(2024, 02, 15).plusDays(30), null);
         Prestito prestitoRivista2 = new Prestito(utente4, rivista4, LocalDate.of(2024, 02, 17), LocalDate.of(2024, 02, 17).plusDays(30), LocalDate.of(2024, 03, 01));
 
         // AGGIUNTA AL CATALOGO
@@ -145,11 +145,10 @@ public class Application {
         System.out.println("------------------------ RICERCA RIVISTA PER UNA PARTE DI TITOLO ------------------------");
         rd.ricercaRivistaParteDiTitolo("3").forEach(System.out::println);
 
-
-        // RICERCA DI UN LIBRO ATTUALMENTE IN PRESTITO DATO UN NUMERO DI TESSERA UTENTE
-
-
-        // RICERCA DI UNA RIVISTA ATTUALMENTE IN PRESTITO DATO UN NUMERO DI TESSERA UTENTE
+        // RICERCA DI UN PRESTITO SCADUTO E NON RESTITUITO
+        System.out.println("------------------------ RICERCA RIVISTA PER UNA PARTE DI TITOLO ------------------------");
+        System.out.println("c");
+        pd.prestitiScadutiNonRestituiti().forEach(System.out::println);
     }
 
 }
